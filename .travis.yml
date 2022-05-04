@@ -15,9 +15,10 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "ap-northeast-2"
-  file: $TRAVIS_BUILD_DIR
+  zip_file: $TRAVIS_BUILD_DIR
   skip_cleanup: true
-  access_key_id: $AWS_ACCESS_KEY
+  access_key_id: 
+    secure: $AWS_ACCESS_KEY
   secret_access_key: 
     secure: $AWS_SECRET_ACCESS_KEY
   app: "docker-react-nginx-app"
