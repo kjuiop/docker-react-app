@@ -12,5 +12,18 @@ before_install:
 script:
   - docker run -e CI=true kjuiop/docker-react-nginx-app npm run test -- --coverage
 
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-2"
+  app: "docker-react-nginx-app"
+  env: "Dockerreactnginxapp-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-2-340651985871"
+  bucket_path: "docker-react-nginx-app"
+  on:
+    branch: master
+
+access_key_id : $AWS_ACCESS_KEY
+secret_access_key : $AWS_SECRET_ACCESS_KEY
+
 after_success:
   - echo "Test Success"
