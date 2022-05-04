@@ -15,6 +15,8 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "ap-northeast-2"
+  file: $TRAVIS_BUILD_DIR
+  skip_cleanup: true
   access_key_id: 
     secure: $AWS_ACCESS_KEY
   secret_access_key: 
